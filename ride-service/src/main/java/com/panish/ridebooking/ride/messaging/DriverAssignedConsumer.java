@@ -1,0 +1,3 @@
+package com.panish.ridebooking.ride.messaging;
+import com.panish.ridebooking.events.DriverAssignedEvent;import com.panish.ridebooking.ride.service.RideEventService;import org.springframework.kafka.annotation.KafkaListener;import org.springframework.stereotype.Component;
+@Component public class DriverAssignedConsumer {private final RideEventService service;public DriverAssignedConsumer(RideEventService s){service=s;}@KafkaListener(topics="driver-assigned-topic",groupId="ride-service-assigned") public void consume(DriverAssignedEvent event){service.handleAssigned(event);}}

@@ -1,0 +1,3 @@
+package com.panish.ridebooking.ride.domain;
+import jakarta.persistence.*; import java.time.Instant;
+@Entity @Table(name="outbox_events") public class OutboxEvent {@Id private String id; @Column(nullable=false) private String topic; @Lob @Column(nullable=false) private String payload; @Column(nullable=false) private boolean published=false; @Column(nullable=false) private Instant createdAt=Instant.now(); protected OutboxEvent(){} public OutboxEvent(String id,String topic,String payload){this.id=id;this.topic=topic;this.payload=payload;} public String getId(){return id;} public String getTopic(){return topic;} public String getPayload(){return payload;} public boolean isPublished(){return published;} public void markPublished(){published=true;} }

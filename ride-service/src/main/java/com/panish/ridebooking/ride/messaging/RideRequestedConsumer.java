@@ -1,0 +1,3 @@
+package com.panish.ridebooking.ride.messaging;
+import com.panish.ridebooking.events.RideRequestedEvent;import com.panish.ridebooking.ride.service.RideEventService;import org.springframework.kafka.annotation.KafkaListener;import org.springframework.kafka.support.Acknowledgment;import org.springframework.stereotype.Component;
+@Component public class RideRequestedConsumer {private final RideEventService service;public RideRequestedConsumer(RideEventService s){service=s;}@KafkaListener(topics="ride-requested-topic",groupId="ride-service") public void consume(RideRequestedEvent event){service.handleRequest(event);}}

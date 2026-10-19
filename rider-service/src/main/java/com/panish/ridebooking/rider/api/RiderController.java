@@ -1,0 +1,3 @@
+package com.panish.ridebooking.rider.api;
+import com.panish.ridebooking.rider.service.RiderService; import jakarta.validation.Valid; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/riders") public class RiderController {private final RiderService service; public RiderController(RiderService service){this.service=service;} @PostMapping("/rides") @ResponseStatus(HttpStatus.ACCEPTED) public RideRequestResponse requestRide(@Valid @RequestBody CreateRideRequest request){return service.requestRide(request);}}

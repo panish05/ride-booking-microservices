@@ -1,0 +1,3 @@
+package com.panish.ridebooking.driver.domain;
+import jakarta.persistence.*;
+@Entity @Table(name="drivers") public class Driver {@Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id;@Column(nullable=false) private String name;@Column(nullable=false) private String status="AVAILABLE";protected Driver(){}public Driver(String name){this.name=name;}public Long getId(){return id;}public String getName(){return name;}public String getStatus(){return status;}public void setStatus(String s){status=s;}}

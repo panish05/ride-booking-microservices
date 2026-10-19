@@ -1,0 +1,3 @@
+package com.panish.ridebooking.ride.messaging;
+import com.panish.ridebooking.events.DriverAssignmentFailedEvent;import com.panish.ridebooking.ride.service.RideEventService;import org.springframework.kafka.annotation.KafkaListener;import org.springframework.stereotype.Component;
+@Component public class DriverAssignmentFailedConsumer {private final RideEventService service;public DriverAssignmentFailedConsumer(RideEventService s){service=s;}@KafkaListener(topics="driver-assignment-failed-topic",groupId="ride-service-failures") public void consume(DriverAssignmentFailedEvent event){service.handleAssignmentFailed(event);}}

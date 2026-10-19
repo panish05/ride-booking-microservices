@@ -1,0 +1,3 @@
+package com.panish.ridebooking.notification.messaging;
+import com.panish.ridebooking.events.*;import org.springframework.kafka.annotation.KafkaListener;import org.springframework.stereotype.Component;
+@Component public class NotificationConsumer {@KafkaListener(topics="driver-assigned-topic",groupId="notification-service-assigned")public void assigned(DriverAssignedEvent e){System.out.printf("[PUSH/SMS] Ride %d assigned to driver %s (id=%d)%n",e.rideId(),e.driverName(),e.driverId());}@KafkaListener(topics="driver-assignment-failed-topic",groupId="notification-service-failed")public void failed(DriverAssignmentFailedEvent e){System.out.printf("[PUSH/SMS] Ride %d could not be assigned: %s%n",e.rideId(),e.reason());}}

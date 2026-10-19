@@ -1,0 +1,3 @@
+package com.panish.ridebooking.ride.api;
+import com.panish.ridebooking.ride.domain.Ride;import com.panish.ridebooking.ride.repository.RideRepository;import org.springframework.web.bind.annotation.*;import java.util.List;
+@RestController @RequestMapping("/api/rides") public class RideController {private final RideRepository rides;public RideController(RideRepository r){rides=r;}@GetMapping public List<Ride> all(){return rides.findAll();}@GetMapping("/{id}") public Ride get(@PathVariable Long id){return rides.findById(id).orElseThrow(()->new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.NOT_FOUND,"Ride not found"));}}
